@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block title %}Login | Órdenes{% endblock %}
+{% block content %}
+
+
+
+<br><br><br>
+
+
+<div class="container ">
+    <div class="row mt-3">
+    <div class="col-md-9 mx-auto mb-5">
+        {% if 'register' in request.GET %}
+        <p >Usuario registrado correctamente.</p>
+        {% endif %}
+        <form action="" method="post">
+        {% csrf_token %}
+        <h3 class="mb-4 text-center text-light">Iniciar sesión</h3>
+        {% if form.non_field_errors %}
+            <p >Usuario o contraseña incorrectos</p>
+        {% endif %}
+        <p>
+            <input type="text" name="username" autofocus maxlength="254" required
+            id="id_username" class="form-control" placeholder="Nombre de usuario"/>
+        </p>
+        <p>
+            <input type="password" name="password" required
+            id="id_password" class="form-control" placeholder="Contraseña"/>
+        </p>
+        <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+        </form>
+        <p>
+          <a class="text-light" href="{% url 'password_reset' %}">Recuperar Contraseña</a>
+        </p>
+    </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

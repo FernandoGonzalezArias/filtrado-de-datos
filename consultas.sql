@@ -1,0 +1,25 @@
+-- Query 1
+
+SELECT ad.city, COUNT(so.salesorderid) AS cantidad_ordenes
+FROM salesorderheader so
+JOIN address ad ON so.shiptoaddressid = ad.addressid
+GROUP BY ad.city;
+
+-- Query 2
+
+SELECT c.*
+FROM customer c
+WHERE c.personid IS NOT NULL AND c.storeid IS NULL;
+
+-- query 3
+
+SELECT st.name AS territory_name, COUNT(so.salesorderid) AS customer_count
+FROM salesorderheader so
+JOIN salesterritory st ON so.territoryid = st.territoryid
+GROUP BY st.name
+ORDER BY territory_name ASC;
+
+
+
+
+

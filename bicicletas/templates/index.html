@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+<div class="container mt-5">
+    <form method="GET">
+        <div class="row">
+            <div class="col-3">
+                <label for="codigo_orden" class="form-label">Codigo Orden</label>
+                <div class="input-group">
+                    <input type="text" id="codigo_orden" name="codigo_orden" class="form-control" value="{{ request.GET.codigo_orden }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="ciudad" class="form-label">Ciudad</label>
+                <div class="input-group">
+                    <input type="text" id="ciudad" name="ciudad" class="form-control" value="{{ request.GET.ciudad }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="codigo_postal" class="form-label">Codigo Postal</label>
+                <div class="input-group">
+                    <input type="text" id="codigo_postal" name="codigo_postal" class="form-control" value="{{ request.GET.codigo_postal }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="fecha_entrega_desde" class="form-label">Fecha Entrega Desde</label>
+                <div class="input-group">
+                    <input type="date" id="fecha_entrega_desde" name="fecha_entrega_desde" class="form-control" value="{{ request.GET.fecha_entrega_desde }}">
+                </div>
+            </div>
+            
+                <button type="submit" class="btn btn-outline-dark btn-dark text-light mt-3">Filtrar</button>
+            
+        </div>
+    </form>
+</div>
+
+<hr>
+
+<div class="container ">
+    <div class="row">
+
+        <table class="table table-responsive table-secondary ">
+            <thead>
+                <tr>
+                    <th scope="col">Código de orden</th>
+                    <th scope="col">Fecha de entrega</th>
+                    <th scope="col">Fecha de vencimiento</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Dirección uno</th>
+                    <th scope="col">Ciudad</th>
+                </tr>
+            </thead>
+            <tbody  class="table-group-divider">
+                {% for orden in ordenes %}
+                <tr>
+                    <td>{{ orden.salesorderid }}</td>
+                    <td>{{ orden.shipdate|date:"d-m-Y" }}</td>
+                    <td>{{ orden.duedate|date:"d-m-Y" }}</td>
+                    <td>{{ orden.status }}</td>
+                    <td>{{ orden.shiptoaddressid.addressline1 }}</td>
+                    <td>{{ orden.shiptoaddressid.city }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </div>
+</div>
+
+
+{% endblock %}
