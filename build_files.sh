@@ -17,3 +17,6 @@ python -m pip install -r requirements.txt
 echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
+# Run migrations
+echo "Run migrations..."
+python manage.py migrate
