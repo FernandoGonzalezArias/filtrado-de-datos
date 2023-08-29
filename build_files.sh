@@ -19,7 +19,6 @@ python manage.py collectstatic --noinput --clear
 
 # Run migrations
 echo "Run migrations..."
-python manage.py makemigration
 python manage.py migrate
-python manage.py runserver
+
 
