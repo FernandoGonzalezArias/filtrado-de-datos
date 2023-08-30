@@ -31,8 +31,8 @@ def index(request):
     # la variable p 500 es para que muestre los primeros 500 datos 
     # para dar mas velocidad a la carga de datos y a los filtrados
     # ya que la base de datos es demasiado grande y deja lenta la ejecucion.
-    p500 = ordenes[:500] 
-    context = {'ordenes': p500}
+    p50 = ordenes[:50] 
+    context = {'ordenes': p50}
     return render(request, 'index.html', context)
 
 
